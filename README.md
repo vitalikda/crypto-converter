@@ -11,7 +11,7 @@ In the future, would be great to add support for selecting a different tokens an
 - [`src/app/page.tsx`](/src/app/page.tsx): the main code with the conversion form
 - [`src/components/ui`](src/components/ui): base components
 - [`src/components/wallet-connector`](src/components/wallet-menu): the component to manage wallet state
-- [`src/components/providers`](src/components/providers): react context providers with custom configs
+- [`src/providers`](src/providers): react context providers with custom configs
 - [`src/lib/coins`](src/lib/coins): curated token list (atm, USD and wBTC)
 
 ## Getting Started
