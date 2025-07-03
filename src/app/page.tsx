@@ -21,7 +21,8 @@ import { cn } from "@/lib/utils";
 import { ArrowUpDownIcon, RotateCwIcon } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { useAccount } from "wagmi";
+import { mainnet } from "viem/chains";
+import { useAccount, useSwitchChain } from "wagmi";
 
 export default function Home() {
   const {
@@ -33,6 +34,7 @@ export default function Home() {
   const wBtcPrice = useMemo(() => priceUsd?.bitcoin || 0, [priceUsd]);
 
   const { isConnected, chainId } = useAccount();
+  const { switchChain } = useSwitchChain();
 
   const [symbolFrom, setSymbolFrom] = useState("USD");
   const coinFrom = useMemo(() => getCoin(symbolFrom), [symbolFrom]);
@@ -157,7 +159,9 @@ export default function Home() {
               chainId === 1 ? (
                 <Button disabled={isPricesError}>Coming Soon</Button>
               ) : (
-                <Button disabled>Switch to Ethereum Mainnet</Button>
+                <Button onClick={() => switchChain({ chainId: mainnet.id })}>
+                  Switch to Ethereum Mainnet
+                </Button>
               )
             ) : (
               <Button disabled>Connect Wallet First</Button>
